@@ -25,5 +25,12 @@ class Product(db.Model):
         self.price = price
         self.qty = qty
 
+class ProductSchema(ma.Schema):
+    class Meta:
+        fields = ('id', 'name', 'description', 'price', 'qty')
+
+product_schema = ProductSchema(strict=True)
+products_schema = ProductSchema(many=True, strict=True)
+
 if __name__ == '__main__':
     app.run(debug=True)
